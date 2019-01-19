@@ -20,7 +20,7 @@ import (
 const (
     host     = "localhost"
     port     = 5432
-    user     = "wangkuo1"
+    user     = "sysu"
     password = "123456"
     dbname   = "go"
 )
@@ -102,9 +102,6 @@ func person(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("There was an error:", err.Error())
 	}
 
-	//fmt.Fprintf(w,"content:%s",result)
-	//fmt.Fprintf(w,"<hr/>")
-	//fmt.Fprintf(w,"content:",result)
 }
 
 func vehicle(w http.ResponseWriter, r *http.Request) {
@@ -155,9 +152,6 @@ func vehicle(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("There was an error:", err.Error())
 	}
 
-	//fmt.Fprintf(w,"content:%s",result)
-	//fmt.Fprintf(w,"<hr/>")
-	//fmt.Fprintf(w,"content:",result)
 }
 
 func starship(w http.ResponseWriter, r *http.Request) {
@@ -212,9 +206,6 @@ func starship(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("There was an error:", err.Error())
 	}
 
-	//fmt.Fprintf(w,"content:%s",result)
-	//fmt.Fprintf(w,"<hr/>")
-	//fmt.Fprintf(w,"content:",result)
 }
 func film(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
@@ -346,7 +337,7 @@ func login(w http.ResponseWriter, r *http.Request) {
     password :=r.Form["password"]
     //db, _ := bolt.Open("swapi.db", 0600, nil)
 
-    psqlInfo := fmt.Sprintf("host=localhost port=5432 user=wangkuo1 "+
+    psqlInfo := fmt.Sprintf("host=localhost port=5432 user=sysu "+
         "password=123456 dbname=go sslmode=disable")
     db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
@@ -425,7 +416,7 @@ func regist(w http.ResponseWriter, r *http.Request) {
         return nil
     })*/
 
-    psqlInfo := fmt.Sprintf("host=localhost port=5432 user=wangkuo1 "+
+    psqlInfo := fmt.Sprintf("host=localhost port=5432 user=sysu "+
         "password=123456 dbname=go sslmode=disable")
     db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
@@ -548,26 +539,3 @@ func main() {
 		log.Fatal("ListenAndserve:", err)
 	}
 }
-
-// package main
-
-// import (
-//     "log"
-
-//     "github.com/adampresley/swapi-go/swapi"
-// )
-
-// func main() {
-//     client := swapi.NewClient()
-//     result, status, err := client.GetPersonById(1)
-
-//     if err != nil {
-//         log.Fatalf("Cannot get person: %s", err.Error())
-//     }
-
-//     if status != 200 {
-//         log.Println("HTTP error with message", result.ErrorMessage)
-//     }
-
-//     log.Println(result)
-// }
