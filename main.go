@@ -322,9 +322,7 @@ func species(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("There was an error:", err.Error())
 	}
 
-	//fmt.Fprintf(w,"content:%s",result)
-	//fmt.Fprintf(w,"<hr/>")
-	//fmt.Fprintf(w,"content:",result)
+
 }
 
 
@@ -345,13 +343,7 @@ func login(w http.ResponseWriter, r *http.Request) {
         return
     }
     defer db.Close()
-    /*var v []byte
-    db.View(func(tx *bolt.Tx) error {
-        b := tx.Bucket([]byte("users"))
-        v = b.Get([]byte(string(username[0])))
-        // fmt.Printf("The answer is: %s\n", v)
-        return nil
-    })*/
+
     sqlStatement := "SELECT password FROM login WHERE username=$1;"
     var v []byte
     row := db.QueryRow(sqlStatement, username[0])
